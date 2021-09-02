@@ -9,6 +9,23 @@ class Post
         $this->db = new Database;
     }
 
+    public function updatePost($data)
+    {
+        $sql = "UPDATE posts SET title = :title, body = :body WHERE id = :id";
+        $this->db->query($sql);
+
+        // Bind values
+        $this->db->bind(':id', $data['id']);
+        $this->db->bind(':title', $data['title']);
+        $this->db->bind(':body', $data['body']);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function getPosts()
     {
         $sql = "SELECT *,
