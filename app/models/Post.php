@@ -41,4 +41,24 @@ class Post
             return false;
         }
     }
+
+    public function getPostById($id)
+    {
+        // $sql = "SELECT *,
+        // posts.id as postId,
+        // users.id as userId,
+        // posts.created_at as postDate,
+        // users.created_at as userData
+        // FROM posts
+        // INNER JOIN users
+        // ON posts.user_id = users.id
+        // WHERE posts.id = :id";
+
+        $sql = "SELECT * FROM posts where id = :id";
+        $this->db->query($sql);
+        $this->db->bind(':id', $id);
+
+        // Return the row
+        return $this->db->single();
+    }
 }

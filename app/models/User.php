@@ -9,6 +9,18 @@ class User
         $this->db = new Database;
     }
 
+    public function getUserById($id)
+    {
+        $sql = "SELECT * FROM users WHERE id = :id";
+        $this->db->query($sql);
+
+        // Bind value
+        $this->db->bind(':id', $id);
+
+        // Return single row
+        return $this->db->single();
+    }
+
     // Find user by email
     public function findUserByEmail($email)
     {
