@@ -10,10 +10,13 @@
 
 <?php if ($data['post']->user_id == $_SESSION['user_id']) : ?>
     <hr>
-    <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->id; ?>" class="btn btn-dark">Edit</a>
+    <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->id; ?>" class="btn btn-dark"><i class="fas fa-pencil-alt mr-1"></i>Edit</a>
 
     <form action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']->id; ?>" method="post" class="float-right">
-        <input type="submit" value="Delete" class="btn btn-danger">
+        <!-- <input type="submit" value="Delete" class="btn btn-danger"> -->
+        <button type="submit" class="btn btn-danger">
+            <i class="fas fa-trash-alt mr-1"></i> Delete
+        </button>
     </form>
 <?php endif; ?>
 
